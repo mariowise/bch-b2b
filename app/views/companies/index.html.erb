@@ -1,49 +1,94 @@
-<%= render "header" %>
 
-<div class="row">
-  <div class="col-md-9">
-
-    <div class="panel panel-default">
-      <div class="panel-heading panel-heading-toolbox">
-        <div class="panel-title">
-          Listado
-        </div>
-        <div class="panel-toolbar">
-          <%= link_to new_company_path, :class => "btn btn-success" do %><i class="fa fa-plus"></i> Nuevo<% end %>
-        </div>
-      </div>
-      <div class="panel-body">
-
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th><%= t(:name, scope: [:helpers, :label, :company]) %></th>
-                <th><%= t(:score, scope: [:helpers, :label, :company]) %></th>
-                <th><%= t(:rut, scope: [:helpers, :label, :company]) %></th>
-                <th><%= t(:category, scope: [:helpers, :label, :company]) %></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @companies.each do |company| %>
-              <tr>
-                <td>
-                  <%= link_to company do %><%= company.name %><% end %>
-                </td>
-                <td><%= company.score %></td>
-                <td><%= company.rut %></td>
-                <td><%= company.category %></td>
-
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-        <div class="text-center"><%= will_paginate @companies, renderer: BootstrapPagination::Rails %></div>
-      </div>
-    </div>
-
-  </div>
-  <div class="col-md-3"><%= render "info" %></div>
+<% content_for :out_container do %>
+<div class="wide">
+  <div id="map" style='width: 100%; height: 400px; margin-top: -20px; margin-bottom: 20px;'></div>
 </div>
+<% end %>
+
+<div ng-app="sortApp" ng-controller="mainController">
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+        <input type="text" class="form-control input-lg" placeholder="Buscar empresa según nombre, giro o categoría" ng-model="busquedaEmpresas.busqueda">
+      </div>      
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-md-3 text-center" ng-repeat-start="empresa in empresas | orderBy:sortType:sortReverse | filter:busquedaEmpresas">
+      <img class="wide" src="{{empresa.image_url}}">
+      <h3>{{empresa.name}}</h3>
+    </div>
+    <div class="clearfix" ng-if="$index%4==2"></div>
+    <div ng-repeat-end=""></div>
+  </div>
+
+</div>
+
+<% content_for :script do %>
+<script>
+var styleArray = [
+{
+  featureType: "all",
+  stylers: [
+   { saturation: -90 }
+  ]
+},{
+  featureType: "road.arterial",
+  elementType: "geometry",
+  stylers: [
+    { hue: "#00ffee" },
+    { saturation: 50 }
+  ]
+},{
+  featureType: "poi.business",
+  elementType: "labels",
+  stylers: [
+    { visibility: "off" }
+  ]
+}
+];
+
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {
+  disableDefaultUI: true,
+  styles: styleArray
+}, internal: { id: 'map' }}, function(){
+  markers = handler.addMarkers([
+    { lat: -33.4082443, lng: -70.5617486, picture: { url: "/img/marker-small.png", width: 36, height: 45 } },
+    { lat: -33.4302443, lng: -70.5617486, picture: { url: "/img/marker-small.png", width: 36, height: 45 } }
+  ]);
+  handler.bounds.extendWith(markers);
+});
+handler.getMap().setZoom(13);
+handler.getMap().setCenter(new google.maps.LatLng(-33.4082443, -70.5617486));
+
+
+
+
+
+
+angular.module('sortApp', [])
+
+.controller('mainController', function($scope) {
+  var camposBusqueda = ["name","tag"];
+  var empresas = [
+    <% @companies.each do |company| %>
+    {
+      name: "<%= company.name %>",
+      image_url: "<%= company.avatar.url(:medium) %>"
+    }, 
+    <% end %>
+  ];    
+  for(empresa in empresas) { empresa = empresas[empresa]; 
+    var temp = "";
+    for(var j=0;j<camposBusqueda.length;j++){
+      temp+=empresa[camposBusqueda[j]];
+    }    
+    empresa.busqueda = temp;
+  }
+  $scope.empresas = empresas;
+});
+</script>
+<% end %>

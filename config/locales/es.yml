@@ -91,6 +91,11 @@ es:
         last_sign_in: "Ultimo ingreso al sistema"
         roles: "Permisos"
         birthdate: "Fecha de nacimiento"
+      company:
+        name: Nombre
+        rut: RUT
+        category: Categorías
+        score: Puntuación
     submit:
       create: "Crear nuevo"
       update: "Guardar"

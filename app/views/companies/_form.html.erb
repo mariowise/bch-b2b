@@ -1,25 +1,40 @@
-<%= form_for(@company) do |f| %>
+<%= form_for(@company, html: { multipart: true }) do |f| %>
 <% if @company.errors.any? %>
 <%= render partial: "shared/errors", locals: { resource: @company } %>
 <% end %>
 
-<div class="form-group">
-                <%= f.label :name %>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <%= image_tag @company.avatar.url(:medium), :class => "wide" %>
+            </div>
+        </div>        
+    </div>
+    <div class="col-sm-9">
+
+        <div class="form-group">
+            <%= label :company, "Foto de perfil" %>
+            <%= file_field :company, :avatar, :class => "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :name %>
             <%= f.text_field :name, :class => "form-control" %>
-    </div>
-<div class="form-group">
-                <%= f.label :score %>
-            <%= f.text_field :score, :class => "form-control" %>
-    </div>
-<div class="form-group">
-                <%= f.label :rut %>
+        </div>
+        <div class="form-group">
+            <%= f.label :rut %>
             <%= f.text_field :rut, :class => "form-control" %>
-    </div>
-<div class="form-group">
-                <%= f.label :category %>
+        </div>
+        <div class="form-group">
+            <%= f.label :category %>
             <%= f.text_field :category, :class => "form-control" %>
+        </div>
+        <div class="actions">
+            <%= f.submit :class => "btn btn-success" %>
+        </div>
+
     </div>
-<div class="actions">
-    <%= f.submit :class => "btn btn-success" %>
 </div>
+
+
 <% end %>

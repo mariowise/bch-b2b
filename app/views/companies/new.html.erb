@@ -1,23 +1,23 @@
-<% render "header" %>
+<%= render "header" %>
 
 <div class="row">
 	<div class="col-md-9">
 		
-<div class="panel panel-default">
-	<div class="panel-heading panel-heading-toolbox">
-		<div class="panel-title">
-			Nuevo
-		</div>
-		<div class="panel-toolbar">
-			<%= link_to 'Volver', companies_path, :class => "btn btn-link" %>
-		</div>
-	</div>
-	<div class="panel-body">
-		
-		<%= render 'form' %>
+		<div class="panel panel-default">
+			<div class="panel-heading panel-heading-toolbox">
+				<div class="panel-title">
+					Nuevo
+				</div>
+				<div class="panel-toolbar">
+					<%= link_to 'Volver', companies_path, :class => "btn btn-link" %>
+				</div>
+			</div>
+			<div class="panel-body">
+				
+				<%= render 'form' %>
 
-	</div>
-</div>
+			</div>
+		</div>
 
 	</div>
 	<div class="col-md-3">

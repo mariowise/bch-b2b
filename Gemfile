@@ -79,3 +79,9 @@ gem 'quiet_assets', group: :development
 
 # Pagination
 gem "will_paginate-bootstrap"
+
+gem 'jquery-tablesorter'
+
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'angularjs-rails'

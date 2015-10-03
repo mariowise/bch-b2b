@@ -1,7 +1,7 @@
-<% render "header" %>
+<%= render "header" %>
 
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-12">
 
 		<div class="panel panel-default">
 			<div class="panel-heading panel-heading-toolbox">
@@ -15,35 +15,42 @@
 				</div>
 			</div>
 			<div class="panel-body">
+
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="panel panel-default">
+						    <div class="panel-body">
+						        <%= image_tag @company.avatar.url(:medium), :class => "wide" %>
+						    </div>
+						</div>
+					</div>
+					<div class="col-sm-9">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<th><%= t(:name, scope: [:helpers, :label, :company]) %>:</th>
+									<td><%= @company.name %></td>
+								</tr>
+								<tr>
+									<th><%= t(:score, scope: [:helpers, :label, :company]) %>:</th>
+									<td><%= @company.score %></td>
+								</tr>
+								<tr>
+									<th><%= t(:rut, scope: [:helpers, :label, :company]) %>:</th>
+									<td><%= @company.rut %></td>
+								</tr>
+								<tr>
+									<th><%= t(:category, scope: [:helpers, :label, :company]) %>:</th>
+									<td><%= @company.category %></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 				
-				<table class="table table-bordered">
-					<tbody>
-											<tr>
-						  <th><%= t(:name, scope: [:helpers, :label, :company]) %>:</th>
-						  <td><%= @company.name %></td>
-						</tr>
-											<tr>
-						  <th><%= t(:score, scope: [:helpers, :label, :company]) %>:</th>
-						  <td><%= @company.score %></td>
-						</tr>
-											<tr>
-						  <th><%= t(:rut, scope: [:helpers, :label, :company]) %>:</th>
-						  <td><%= @company.rut %></td>
-						</tr>
-											<tr>
-						  <th><%= t(:category, scope: [:helpers, :label, :company]) %>:</th>
-						  <td><%= @company.category %></td>
-						</tr>
-										</tbody>
-				</table>
 
 			</div>
 		</div>
-
-	</div>
-	<div class="col-md-3">
-
-		<%= render "info" %>
 
 	</div>
 </div>

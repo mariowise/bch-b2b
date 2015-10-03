@@ -18,22 +18,22 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                                  <th><%= t(:product, scope: [:helpers, :label, :offer]) %></th>
-                                  <th><%= t(:title, scope: [:helpers, :label, :offer]) %></th>
-                                  <th><%= t(:description, scope: [:helpers, :label, :offer]) %></th>
-                              </tr>
+                <th><%= t(:product, scope: [:helpers, :label, :offer]) %></th>
+                <th><%= t(:title, scope: [:helpers, :label, :offer]) %></th>
+                <th><%= t(:description, scope: [:helpers, :label, :offer]) %></th>
+              </tr>
             </thead>
 
             <tbody>
               <% @offers.each do |offer| %>
-                <tr>
-                                        <td><%= offer.product %></td>
-                                        <td>
-                        <%= link_to offer do %><%= offer.title %><% end %>
-                      </td>
-                                        <td><%= offer.description %></td>
-                              
-                </tr>
+              <tr>
+                <td><%= offer.product %></td>
+                <td>
+                  <%= link_to offer do %><%= offer.title %><% end %>
+                </td>
+                <td><%= offer.description %></td>
+                
+              </tr>
               <% end %>
             </tbody>
           </table>

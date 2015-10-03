@@ -6,7 +6,6 @@ class CompaniesController < ApplicationController
   # GET /companies
   def index
     @companies = Company.all
-      .paginate(:page => params[:page])
   end
 
   # GET /companies/1
@@ -68,7 +67,7 @@ class CompaniesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def company_params
-      params.require(:company).permit(:name, :score, :rut, :category)
+      params.require(:company).permit(:name, :score, :rut, :category, :avatar)
     end
 
     # Authorize actions?
