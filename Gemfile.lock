@@ -179,6 +179,9 @@ GEM
       thread_safe (~> 0.1)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.7)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -205,3 +208,4 @@ DEPENDENCIES
   selectize-rails
   therubyracer
   turbolinks
+  will_paginate-bootstrap

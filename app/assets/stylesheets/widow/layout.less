@@ -9,8 +9,8 @@ html, body {
 	min-height: 100%;
 	position: relative;
 	
-	& > #header-ghost { height: (@header-height + 10px); }
-	& > #footer-ghost { height: @footer-height; }
+	& > #header-ghost { height: (@header-height); }
+	& > #footer-ghost { height: (@footer-height+50px); }
 	& > #footer {
 		width: 100%;
 		height: @footer-height;
@@ -18,4 +18,14 @@ html, body {
 		bottom: 0px;
 		left: 0px;
 	}
+	.breadcrumb-container {
+		background-color: @breadcrumb-back;
+		border-top: 5px solid @breadcrumb-top-border;
+		margin-bottom: 20px;
+
+		.breadcrumb {
+			margin-bottom: 0px;
+		}
+	}
+
 }

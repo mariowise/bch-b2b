@@ -12,6 +12,10 @@ module ApplicationHelper
 	end
 
 	def current_route
-		eval("#{controller_name}_#{action_name}_path")
+		begin
+			eval("#{controller_name}_#{action_name}_path")
+		rescue
+
+		end	
 	end
 end

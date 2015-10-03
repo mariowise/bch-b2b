@@ -76,3 +76,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 
 # Para que los GET de los assets no salgan en la consola de linux
 gem 'quiet_assets', group: :development
+
+# Pagination
+gem "will_paginate-bootstrap"
