@@ -5,7 +5,9 @@ class Tag < ActiveRecord::Base
 
 	self.per_page = 10
 
-		
+	has_many :company_tags
+	has_many :companies, :through => :company_tags
+
 	# Validations
 			# validates :name, <validations>
 	

@@ -5,6 +5,9 @@ class Company < ActiveRecord::Base
 
 	self.per_page = 10
 
+	has_many :company_tags
+	has_many :tags, :through => :company_tags
+
 	has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "100x100#" }, :default_url => "/img/avatar-missing.jpg"
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/  
 
@@ -21,6 +24,6 @@ class Company < ActiveRecord::Base
 	scope :category, -> (category) { where category: category }
 	
 	def to_s
-		"#{name}"
+		"#{razon_social}"
 	end
 end

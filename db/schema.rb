@@ -11,19 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003190611) do
+ActiveRecord::Schema.define(version: 20151003225650) do
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name",                limit: 255
-    t.string   "score",               limit: 255
-    t.string   "rut",                 limit: 255
-    t.string   "category",            limit: 255
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "avatar_file_name",    limit: 255
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
+    t.string   "razon_social",        limit: 255
+    t.string   "rut",                 limit: 255
+    t.string   "img_url",             limit: 255
+    t.string   "email",               limit: 255
+    t.string   "giro",                limit: 255
+    t.string   "direccion",           limit: 255
+    t.string   "comuna",              limit: 255
+    t.string   "coordenadas",         limit: 255
+    t.text     "descripcion",         limit: 65535
   end
 
   create_table "company_tags", force: :cascade do |t|
