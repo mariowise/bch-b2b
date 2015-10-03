@@ -15,7 +15,7 @@ module ApplicationHelper
 		begin
 			eval("#{controller_name}_#{action_name}_path")
 		rescue
-
+			eval("#{controller_name}_path")
 		end	
 	end
 end

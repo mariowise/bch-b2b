@@ -1,12 +1,12 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_action, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
-  add_breadcrumb "companies", :companies_path
+  # before_action :authorize_action, only: [:show, :edit, :update, :destroy]
+  add_breadcrumb "Empresas", :companies_path
 
   # GET /companies
   def index
     @companies = Company.all
+      .paginate(:page => params[:page])
   end
 
   # GET /companies/1

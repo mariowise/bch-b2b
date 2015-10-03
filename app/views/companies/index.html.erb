@@ -1,8 +1,8 @@
-<% render "header" %>
+<%= render "header" %>
 
 <div class="row">
   <div class="col-md-9">
-    
+
     <div class="panel panel-default">
       <div class="panel-heading panel-heading-toolbox">
         <div class="panel-title">
@@ -13,29 +13,29 @@
         </div>
       </div>
       <div class="panel-body">
-        
+
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-                                  <th><%= t(:name, scope: [:helpers, :label, :company]) %></th>
-                                  <th><%= t(:score, scope: [:helpers, :label, :company]) %></th>
-                                  <th><%= t(:rut, scope: [:helpers, :label, :company]) %></th>
-                                  <th><%= t(:category, scope: [:helpers, :label, :company]) %></th>
-                              </tr>
+                <th><%= t(:name, scope: [:helpers, :label, :company]) %></th>
+                <th><%= t(:score, scope: [:helpers, :label, :company]) %></th>
+                <th><%= t(:rut, scope: [:helpers, :label, :company]) %></th>
+                <th><%= t(:category, scope: [:helpers, :label, :company]) %></th>
+              </tr>
             </thead>
 
             <tbody>
               <% @companies.each do |company| %>
-                <tr>
-                                        <td>
-                        <%= link_to company do %><%= company.name %><% end %>
-                      </td>
-                                        <td><%= company.score %></td>
-                                        <td><%= company.rut %></td>
-                                        <td><%= company.category %></td>
-                              
-                </tr>
+              <tr>
+                <td>
+                  <%= link_to company do %><%= company.name %><% end %>
+                </td>
+                <td><%= company.score %></td>
+                <td><%= company.rut %></td>
+                <td><%= company.category %></td>
+
+              </tr>
               <% end %>
             </tbody>
           </table>
