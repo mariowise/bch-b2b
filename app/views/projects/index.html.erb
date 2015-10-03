@@ -1,0 +1,49 @@
+<% render "header" %>
+
+<div class="row">
+  <div class="col-md-9">
+    
+    <div class="panel panel-default">
+      <div class="panel-heading panel-heading-toolbox">
+        <div class="panel-title">
+          Listado
+        </div>
+        <div class="panel-toolbar">
+          <%= link_to new_project_path, :class => "btn btn-success" do %><i class="fa fa-plus"></i> Nuevo<% end %>
+        </div>
+      </div>
+      <div class="panel-body">
+        
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                                  <th><%= t(:name, scope: [:helpers, :label, :project]) %></th>
+                                  <th><%= t(:type, scope: [:helpers, :label, :project]) %></th>
+                                  <th><%= t(:goal, scope: [:helpers, :label, :project]) %></th>
+                                  <th><%= t(:current_money, scope: [:helpers, :label, :project]) %></th>
+                              </tr>
+            </thead>
+
+            <tbody>
+              <% @projects.each do |project| %>
+                <tr>
+                                        <td>
+                        <%= link_to project do %><%= project.name %><% end %>
+                      </td>
+                                        <td><%= project.type %></td>
+                                        <td><%= project.goal %></td>
+                                        <td><%= project.current_money %></td>
+                              
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center"><%= will_paginate @projects, renderer: BootstrapPagination::Rails %></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-3"><%= render "info" %></div>
+</div>

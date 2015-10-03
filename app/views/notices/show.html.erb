@@ -1,0 +1,41 @@
+<% render "header" %>
+
+<div class="row">
+	<div class="col-md-9">
+
+		<div class="panel panel-default">
+			<div class="panel-heading panel-heading-toolbox">
+				<div class="panel-title">
+					Detalle
+				</div>
+				<div class="panel-toolbar">
+					<%= link_to 'Volver', notices_path, :class => "btn btn-link" %>
+					<%= link_to edit_notice_path(@notice), :class => "btn btn-default" do %><i class="fa fa-pencil"></i> Editar<% end %>
+					<%= link_to @notice, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %><i class="fa fa-trash-o"></i> Eliminar<% end %>
+				</div>
+			</div>
+			<div class="panel-body">
+				
+				<table class="table table-bordered">
+					<tbody>
+											<tr>
+						  <th><%= t(:actions, scope: [:helpers, :label, :notice]) %>:</th>
+						  <td><%= @notice.actions %></td>
+						</tr>
+											<tr>
+						  <th><%= t(:price, scope: [:helpers, :label, :notice]) %>:</th>
+						  <td><%= @notice.price %></td>
+						</tr>
+										</tbody>
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-3">
+
+		<%= render "info" %>
+
+	</div>
+</div>

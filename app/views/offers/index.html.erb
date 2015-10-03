@@ -1,0 +1,47 @@
+<% render "header" %>
+
+<div class="row">
+  <div class="col-md-9">
+    
+    <div class="panel panel-default">
+      <div class="panel-heading panel-heading-toolbox">
+        <div class="panel-title">
+          Listado
+        </div>
+        <div class="panel-toolbar">
+          <%= link_to new_offer_path, :class => "btn btn-success" do %><i class="fa fa-plus"></i> Nuevo<% end %>
+        </div>
+      </div>
+      <div class="panel-body">
+        
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                                  <th><%= t(:product, scope: [:helpers, :label, :offer]) %></th>
+                                  <th><%= t(:title, scope: [:helpers, :label, :offer]) %></th>
+                                  <th><%= t(:description, scope: [:helpers, :label, :offer]) %></th>
+                              </tr>
+            </thead>
+
+            <tbody>
+              <% @offers.each do |offer| %>
+                <tr>
+                                        <td><%= offer.product %></td>
+                                        <td>
+                        <%= link_to offer do %><%= offer.title %><% end %>
+                      </td>
+                                        <td><%= offer.description %></td>
+                              
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-center"><%= will_paginate @offers, renderer: BootstrapPagination::Rails %></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-3"><%= render "info" %></div>
+</div>

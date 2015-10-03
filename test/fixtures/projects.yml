@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  type: 
+  goal: MyString
+  current_money: MyString
+
+two:
+  name: MyString
+  type: 
+  goal: MyString
+  current_money: MyString

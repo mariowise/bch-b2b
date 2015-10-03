@@ -1,0 +1,49 @@
+<% render "header" %>
+
+<div class="row">
+	<div class="col-md-9">
+
+		<div class="panel panel-default">
+			<div class="panel-heading panel-heading-toolbox">
+				<div class="panel-title">
+					Detalle
+				</div>
+				<div class="panel-toolbar">
+					<%= link_to 'Volver', projects_path, :class => "btn btn-link" %>
+					<%= link_to edit_project_path(@project), :class => "btn btn-default" do %><i class="fa fa-pencil"></i> Editar<% end %>
+					<%= link_to @project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %><i class="fa fa-trash-o"></i> Eliminar<% end %>
+				</div>
+			</div>
+			<div class="panel-body">
+				
+				<table class="table table-bordered">
+					<tbody>
+											<tr>
+						  <th><%= t(:name, scope: [:helpers, :label, :project]) %>:</th>
+						  <td><%= @project.name %></td>
+						</tr>
+											<tr>
+						  <th><%= t(:type, scope: [:helpers, :label, :project]) %>:</th>
+						  <td><%= @project.type %></td>
+						</tr>
+											<tr>
+						  <th><%= t(:goal, scope: [:helpers, :label, :project]) %>:</th>
+						  <td><%= @project.goal %></td>
+						</tr>
+											<tr>
+						  <th><%= t(:current_money, scope: [:helpers, :label, :project]) %>:</th>
+						  <td><%= @project.current_money %></td>
+						</tr>
+										</tbody>
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-3">
+
+		<%= render "info" %>
+
+	</div>
+</div>

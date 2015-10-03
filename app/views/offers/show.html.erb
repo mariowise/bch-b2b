@@ -1,0 +1,45 @@
+<% render "header" %>
+
+<div class="row">
+	<div class="col-md-9">
+
+		<div class="panel panel-default">
+			<div class="panel-heading panel-heading-toolbox">
+				<div class="panel-title">
+					Detalle
+				</div>
+				<div class="panel-toolbar">
+					<%= link_to 'Volver', offers_path, :class => "btn btn-link" %>
+					<%= link_to edit_offer_path(@offer), :class => "btn btn-default" do %><i class="fa fa-pencil"></i> Editar<% end %>
+					<%= link_to @offer, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" do %><i class="fa fa-trash-o"></i> Eliminar<% end %>
+				</div>
+			</div>
+			<div class="panel-body">
+				
+				<table class="table table-bordered">
+					<tbody>
+											<tr>
+						  <th><%= t(:product, scope: [:helpers, :label, :offer]) %>:</th>
+						  <td><%= @offer.product %></td>
+						</tr>
+											<tr>
+						  <th><%= t(:title, scope: [:helpers, :label, :offer]) %>:</th>
+						  <td><%= @offer.title %></td>
+						</tr>
+											<tr>
+						  <th><%= t(:description, scope: [:helpers, :label, :offer]) %>:</th>
+						  <td><%= @offer.description %></td>
+						</tr>
+										</tbody>
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+	<div class="col-md-3">
+
+		<%= render "info" %>
+
+	</div>
+</div>

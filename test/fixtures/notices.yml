@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  actions: MyString
+  price: 1
+
+two:
+  actions: MyString
+  price: 1

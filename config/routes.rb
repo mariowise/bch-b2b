@@ -1,5 +1,9 @@
 Tut1::Application.routes.draw do
   
+  resources :notices
+  resources :companies
+  resources :projects
+  resources :offers
   get 'profile/show', :path => "perfil"
   get 'profile/edit', :path => "perfil/editar"
   post 'profile/edit' => "profile#update"
