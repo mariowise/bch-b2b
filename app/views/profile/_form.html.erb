@@ -1,0 +1,54 @@
+<%= form_tag({ controller: "profile", action: "update" }, method: "post", multipart: true) do %>
+<% if @user.errors.any? %>
+<%= render partial: "shared/errors", locals: { resource: @user } %>
+<% end %>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+            <div class="panel-body">
+                <%= image_tag @user.avatar.url(:medium) %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= label :user, :avatar %>
+            <%= file_field :user, :avatar, :class => "form-control" %>
+        </div>
+		<div class="form-group">
+			<%= label :user, :name %>
+			<%= text_field :user, :name, :class => "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= label :user, :lastname %>
+			<%= text_field :user, :lastname, :class => "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= label :user, :phone %>
+			<%= text_field :user, :phone, :class => "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= label :user, :email %>
+			<%= text_field :user, :email, :class => "form-control" %>
+		</div>
+		<div class="form-group">
+			<%= label :user, :birthdate %>
+			<div class="input-group date" id="birthdate">
+	            <%= text_field :user, :birthdate, :class => "form-control", :placeholder => "Seleccione una fecha" %>
+	            <span class="input-group-addon">
+	                <span class="glyphicon glyphicon-calendar"></span>
+	            </span>
+	        </div>
+        </div>
+		<div class="actions">
+			<%= button_tag type: "submit", :class => "btn btn-success float-right" do %>
+			<i class="fa fa-floppy-o"></i> Guardar
+			<% end %>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<% content_for :script do %>
+<script>
+$('#birthdate').datetimepicker({ format: 'DD/MM/YYYY' });
+</script>
+<% end %>

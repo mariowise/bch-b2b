@@ -1,0 +1,6 @@
+<br>
+<br>
+<ul class="nav nav-pills nav-stacked">
+  <li class="<%= "active" if current_route == index_home_path %>"><%= link_to index_home_path do %>Inicio<% end %></li>
+  <li class="<%= "active" if current_route == profile_show_path || current_route == profile_edit_path %>"><%= link_to profile_show_path do %>Mi perfil<% end %></li>
+</ul>

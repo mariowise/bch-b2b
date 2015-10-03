@@ -1,0 +1,17 @@
+<h1><i class="fa fa-user"></i> Mi perfil</h1>
+<p></p>
+<br>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="panel-title">
+			Editar mi información de perfil
+		</div>
+		<div class="panel-toolbar">
+			<%= link_to profile_show_path, :class => "btn btn-link" do %>Volver<% end %>
+		</div>
+	</div>
+	<div class="panel-body">
+		<%= render "form" %>
+	</div>
+</div>
