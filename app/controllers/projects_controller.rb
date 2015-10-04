@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.all
+      .paginate(:page => params[:page])
   end
 
   # GET /projects/1

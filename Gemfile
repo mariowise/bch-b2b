@@ -85,3 +85,5 @@ gem 'jquery-tablesorter'
 gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'angularjs-rails'
+
+gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'

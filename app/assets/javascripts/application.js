@@ -20,3 +20,5 @@
 //= require gmaps/google
 //= require angular
 //= require_tree .
+//= require jquery.raty
+//= require jquery.raty.min
