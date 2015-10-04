@@ -6,6 +6,8 @@ angular.module('sortApp', [])
 .controller('mainController', function($scope) {
   console.log("mainController running")
   console.log(empresas)
+  if(empresas == undefined)
+    window.location = window.location
 
   var camposBusqueda = ["razon_social","giro","descripcion"];
   for(empresa in empresas) { empresa = empresas[empresa]; 
