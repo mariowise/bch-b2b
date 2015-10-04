@@ -2,7 +2,6 @@
 
 <div class="row">
 	<div class="col-md-12">
-
 		<div class="panel panel-default">
 			<div class="panel-heading panel-heading-toolbox">
 				<div class="panel-title">
@@ -15,12 +14,11 @@
 				</div>
 			</div>
 			<div class="panel-body">
-
 				<div class="row">
 					<div class="col-sm-3">
 						<div class="panel panel-default">
 						    <div class="panel-body">
-						        <%= image_tag @company.avatar.url(:medium), :class => "wide" %>
+						        <%= image_tag @company.img_url, :class => "wide" %>
 						    </div>
 						</div>
 					</div>
@@ -28,25 +26,55 @@
 						<table class="table table-bordered">
 							<tbody>
 								<tr>
-									<th><%= t(:name, scope: [:helpers, :label, :company]) %>:</th>
+									<th><%= t(:name, scope: [:helpers, :label, :company]) %></th>
+									<td><%= @company.razon_social %></td>
 								</tr>
 								<tr>
-									<th><%= t(:score, scope: [:helpers, :label, :company]) %>:</th>
+									<th><%= t(:score, scope: [:helpers, :label, :company]) %></th>
+									<td>
+										<div class="rating" style="width:100%;"></div>
+									</td>
+									<script type="text/javascript">
+										$('.rating').raty({ starType: 'i',
+											readOnly : true, 
+											score: 3.3,
+											size: 12,
+										}).css("width","100%");
+									</script>
 								</tr>
 								<tr>
-									<th><%= t(:rut, scope: [:helpers, :label, :company]) %>:</th>
+									<th><%= t(:rut, scope: [:helpers, :label, :company]) %></th>
+									<td><%= @company.rut %></td>
 								</tr>
 								<tr>
-									<th><%= t(:category, scope: [:helpers, :label, :company]) %>:</th>
+									<th><%= t(:category, scope: [:helpers, :label, :company]) %></th>
+									<td>
+										<ul class="tags" style="margin-left: -40px;">
+											<% @company.tags.each do |tag| %>
+												<li class="label label-info"><%= tag %></li>
+											<% end %>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th>Comuna</th>
+									<td><%= @company.comuna %></td>
+								</tr>
+								<tr>
+									<th>Dirección</th>
+									<td><%= @company.direccion %></td>
+								</tr>
+								<tr>
+									<th>Descripción</th>
+									<td><%= @company.descripcion %></td>
 								</tr>
 							</tbody>
 						</table>
+						<br>
+					<button class="btn btn-success" >Contactar</button>
 					</div>
 				</div>
-				
-
 			</div>
 		</div>
-
 	</div>
 </div>

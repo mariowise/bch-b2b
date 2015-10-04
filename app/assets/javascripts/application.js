@@ -21,3 +21,5 @@
 //= require angular
 //= require selectize
 //= require_tree .
+//= require jquery.raty
+//= require jquery.raty.min
