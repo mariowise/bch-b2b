@@ -9,6 +9,8 @@ Tut1::Application.routes.draw do
   get 'profile/edit', :path => "perfil/editar"
   post 'profile/edit' => "profile#update"
 
+  get "mensajes" => "index#messages"
+
   devise_for :users, :path => '', :path_names => { :sign_in => "ingresar", :sign_out => "salir", :sign_up => "registro" }
   
   get "index/home"
