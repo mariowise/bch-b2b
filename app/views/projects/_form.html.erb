@@ -4,22 +4,33 @@
 <% end %>
 
 <div class="form-group">
-                <%= f.label :name %>
-            <%= f.text_field :name, :class => "form-control" %>
-    </div>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control" %>
+</div>
 <div class="form-group">
-                <%= f.label :type %>
-            <%= f.text_field :type, :class => "form-control" %>
-    </div>
+    <%= f.label :description %>
+    <%= f.text_area :description, :class => "form-control" %>
+</div>
 <div class="form-group">
-                <%= f.label :goal %>
-            <%= f.text_field :goal, :class => "form-control" %>
-    </div>
+    <%= f.label :investment %>
+    <%= f.number_field :investment, :class => "form-control" %>
+</div>
 <div class="form-group">
-                <%= f.label :current_money %>
-            <%= f.text_field :current_money, :class => "form-control" %>
-    </div>
+	<%= f.label :tags %>
+    <%= f.text_field :tags %>
+</div>
 <div class="actions">
     <%= f.submit :class => "btn btn-success" %>
 </div>
+<% end %>
+
+<% content_for :script do %>
+<script>
+$('#project_tags').selectize({
+    items: <%= @project.tags.pluck(:id).to_json.html_safe %>,
+    options: <%= Tag.all.to_json(:only => [:id, :name]).html_safe %>,
+    labelField: 'name',
+    valueField: 'id'
+});
+</script>
 <% end %>

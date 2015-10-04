@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003225650) do
+ActiveRecord::Schema.define(version: 20151004125102) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -56,14 +56,30 @@ ActiveRecord::Schema.define(version: 20151003225650) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "name",          limit: 255
-    t.string   "type",          limit: 255
-    t.string   "goal",          limit: 255
-    t.string   "current_money", limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+  create_table "project_tags", force: :cascade do |t|
+    t.integer  "project_id", limit: 4
+    t.integer  "tag_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "project_tags", ["project_id"], name: "index_project_tags_on_project_id", using: :btree
+  add_index "project_tags", ["tag_id"], name: "index_project_tags_on_tag_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",                limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.text     "description",         limit: 65535
+    t.integer  "investment",          limit: 4
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+    t.integer  "user_id",             limit: 4
+  end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -99,4 +115,7 @@ ActiveRecord::Schema.define(version: 20151003225650) do
 
   add_foreign_key "company_tags", "companies"
   add_foreign_key "company_tags", "tags"
+  add_foreign_key "project_tags", "projects"
+  add_foreign_key "project_tags", "tags"
+  add_foreign_key "projects", "users"
 end

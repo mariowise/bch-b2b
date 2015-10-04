@@ -10,6 +10,8 @@
  *
  *= require font-awesome
  *= require_self
+ *= require selectize
+ *= require selectize.default
  *= require bootstrap-datetimepicker
  *= require style.less
  */

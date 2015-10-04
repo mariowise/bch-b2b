@@ -6,7 +6,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading panel-heading-toolbox">
 				<div class="panel-title">
-					Detalle
+					Detalle del proyecto
 				</div>
 				<div class="panel-toolbar">
 					<%= link_to 'Volver', projects_path, :class => "btn btn-link" %>
@@ -18,32 +18,32 @@
 				
 				<table class="table table-bordered">
 					<tbody>
-											<tr>
-						  <th><%= t(:name, scope: [:helpers, :label, :project]) %>:</th>
-						  <td><%= @project.name %></td>
+						<tr>
+							<th><%= t(:name, scope: [:helpers, :label, :project]) %>:</th>
+							<td><%= @project.name %></td>
 						</tr>
-											<tr>
-						  <th><%= t(:type, scope: [:helpers, :label, :project]) %>:</th>
-						  <td><%= @project.type %></td>
+						<tr>
+							<th><%= t(:description, scope: [:helpers, :label, :project]) %>:</th>
+							<td><%= @project.description %></td>
 						</tr>
-											<tr>
-						  <th><%= t(:goal, scope: [:helpers, :label, :project]) %>:</th>
-						  <td><%= @project.goal %></td>
+						<tr>
+							<th><%= t(:investment, scope: [:helpers, :label, :project]) %>:</th>
+							<td><%= as_money @project.investment %></td>
 						</tr>
-											<tr>
-						  <th><%= t(:current_money, scope: [:helpers, :label, :project]) %>:</th>
-						  <td><%= @project.current_money %></td>
+						<tr>
+							<th><%= t(:tags, scope: [:helpers, :label, :project]) %>:</th>
+							<td>
+								<% @project.tags.each do |t| %>
+								<span class="label label-info"><%= t %></span>
+								<% end %>
+							</td>
 						</tr>
-										</tbody>
+					</tbody>
 				</table>
 
 			</div>
 		</div>
 
 	</div>
-	<div class="col-md-3">
-
-		<%= render "info" %>
-
-	</div>
+	<div class="col-md-3"><%= render "info" %></div>
 </div>

@@ -7,6 +7,8 @@ class Tag < ActiveRecord::Base
 
 	has_many :company_tags
 	has_many :companies, :through => :company_tags
+	has_many :project_tags
+	has_many :projects, :through => :project_tags
 
 	# Validations
 			# validates :name, <validations>

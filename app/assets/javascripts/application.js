@@ -19,4 +19,5 @@
 //= require underscore
 //= require gmaps/google
 //= require angular
+//= require selectize
 //= require_tree .

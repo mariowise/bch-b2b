@@ -2,40 +2,42 @@
 
 <div class="row">
   <div class="col-md-9">
-    
+    <ul class="nav nav-pills nav-stacked nav-inline nav-label text-center">
+      <% Tag.all.each do |t| %>
+      <li><%= link_to projects_path(:tag => t.id), :class => "#{"active" if params[:tag].to_i == t.id.to_i}" do %><%= t %><% end %></li>
+      <% end %>
+    </ul>
+    <br>
     <div class="panel panel-default">
       <div class="panel-heading panel-heading-toolbox">
         <div class="panel-title">
-          Listado
+          Proyectos que buscan recursos
         </div>
         <div class="panel-toolbar">
           <%= link_to new_project_path, :class => "btn btn-success" do %><i class="fa fa-plus"></i> Nuevo<% end %>
         </div>
       </div>
       <div class="panel-body">
-        
+
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
-                                  <th><%= t(:name, scope: [:helpers, :label, :project]) %></th>
-                                  <th><%= t(:type, scope: [:helpers, :label, :project]) %></th>
-                                  <th><%= t(:goal, scope: [:helpers, :label, :project]) %></th>
-                                  <th><%= t(:current_money, scope: [:helpers, :label, :project]) %></th>
-                              </tr>
+                <th><%= t(:name, scope: [:helpers, :label, :project]) %></th>
+                <th><%= t(:user, scope: [:helpers, :label, :project]) %></th>
+                <th><%= t(:investment, scope: [:helpers, :label, :project]) %></th>
+                <th><%= t(:created_at, scope: [:helpers, :label, :project]) %></th>
+              </tr>
             </thead>
 
             <tbody>
               <% @projects.each do |project| %>
-                <tr>
-                                        <td>
-                        <%= link_to project do %><%= project.name %><% end %>
-                      </td>
-                                        <td><%= project.type %></td>
-                                        <td><%= project.goal %></td>
-                                        <td><%= project.current_money %></td>
-                              
-                </tr>
+              <tr>
+                <td><%= link_to project do %><%= project.name %><% end %></td>
+                <td><%= project.user %></td>
+                <td><%= as_money project.investment %></td>
+                <td><%= project.created_at %></td>
+              </tr>
               <% end %>
             </tbody>
           </table>

@@ -1,12 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_action, only: [:show, :edit, :update, :destroy]
+  # before_action :authorize_action, only: [:show, :edit, :update, :destroy]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  add_breadcrumb "projects", :projects_path
+  add_breadcrumb "Proyectos", :projects_path
 
   # GET /projects
   def index
-    @projects = Project.all
+    if !params[:tag]
+      @projects = Project.all
+    else
+      @projects = Tag.find(params[:tag]).projects
+    end
+    @projects = @projects.paginate(:page => params[:page])
   end
 
   # GET /projects/1
@@ -30,9 +35,10 @@ class ProjectsController < ApplicationController
   def create
     add_breadcrumb "Nuevo"
     @project = Project.new(project_params)
+    @project.user = current_user
 
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      redirect_to @project, notice: 'El proyecto ha sido creado.'
     else
       render :new
     end
@@ -42,9 +48,10 @@ class ProjectsController < ApplicationController
   def update
     add_breadcrumb @project, projects_path(@project)
     add_breadcrumb "Editar"
+    @project.user = current_user
     
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
+      redirect_to @project, notice: 'El proyecto ha sido actualizado.'
     else
       render :edit
     end
@@ -54,7 +61,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     if @project.errors.empty?
-      redirect_to projects_url, notice: 'Project was successfully destroyed.'
+      redirect_to projects_url, notice: 'El proyecto ha sido eliminado.'
     else
       redirect_to @project, alert: "#{@project.errors.messages[:base][0]}"
     end
@@ -68,7 +75,13 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:name, :type, :goal, :current_money)
+      aux = params.require(:project).permit(
+        :name, 
+        :description, 
+        :investment,
+        :tags)
+      aux[:tags] = Tag.find aux[:tags].split(",") if aux[:tags] != ""
+      aux
     end
 
     # Authorize actions?

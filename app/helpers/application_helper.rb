@@ -18,4 +18,39 @@ module ApplicationHelper
 			eval("#{controller_name}_path")
 		end	
 	end
+
+	def format_rut(rut)
+		rut = rut.to_s
+		"#{ActionController::Base.helpers.number_with_delimiter(rut[0..-2], delimiter: ".")}-#{rut.split("").last}"
+	end
+
+	def as_label(value)
+		content_tag(:span, :class => "label label-#{value.gsub(' ', '')}") do 
+			value
+		end		
+	end
+
+	def as_money(value)
+		value = value.to_s
+		"$ #{ActionController::Base.helpers.number_with_delimiter(value, delimiter: ".")}"
+	end
+
+	def as_phone(value)
+		if value
+			value = value.to_s
+			value = value.split("").reverse().join("")
+			stack = []
+			(0..(value.length/4)).each do |i|
+				stack << value[i*4..i*4+3]
+				stack << " "
+			end
+			value = stack.join("")
+			value.split("").reverse().join("")
+		end
+	end
+
+	def yes_no(value)
+		return "Sí" if value == true
+		"No"
+	end
 end

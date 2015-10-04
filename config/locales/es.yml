@@ -96,6 +96,12 @@ es:
         rut: RUT
         category: Categorías
         score: Puntuación
+      project:
+        name: Nombre
+        description: Descripción
+        investment: "Inversión necesaria"
+        created_at: Fecha de creación
+        user: Autor
     submit:
       create: "Crear nuevo"
       update: "Guardar"
