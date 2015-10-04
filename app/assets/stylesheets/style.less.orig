@@ -14,8 +14,11 @@
 @import "widow/label.less";
 @import "widow/callout.less";
 @import "widow/table.less";
+<<<<<<< HEAD
 @import "widow/nav.less";
+=======
 @import "widow/toastr.less";
+>>>>>>> 72362514cbae1669e29c8d07d90ed8ada37e297c
 
 /**
  * Site

@@ -1,0 +1,41 @@
+.contenedorPrincipal{
+	width: 80%;
+	height: 100%;		
+	margin: 0px auto 0px auto;
+}
+	.contenedorPrincipal h1{
+		background-color: #3b5998;
+		color:white;
+		text-align: center;
+		height: 15%;
+		text-align: center;
+	}
+	.contenedorPrincipal form{
+		height: 70%;
+		border-right: solid;
+		border-left: solid;
+		border-width:1px;
+		border-color: #888;
+	}
+		
+#idUsuario{
+	float: right;
+	margin-right: 10px;
+	height: 20px;
+
+}
+
+.mensajesRecibidos{
+	overflow-y: auto;
+	height: 70%;
+	width: 90%;
+	margin: 50px auto 0px auto;
+	border: solid;
+	border-width:1px;
+	border-color: #888;
+}		
+
+.panelEnvioMensajes{
+	width: 90%;
+	margin: auto;
+}

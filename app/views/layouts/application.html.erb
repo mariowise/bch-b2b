@@ -30,6 +30,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><%= link_to companies_path do %><i class="fa fa-building"></i> Empresas<% end %></li>
 							<li><%= link_to projects_path do %><i class="fa fa-folder-open"></i> Proyectos<% end %></li>
+							<li><a href="/mensajes"><i class="fa fa-envelope"></i></a></li>
 							<li>
 								<%= link_to profile_show_path do %>
 									<%= image_tag current_user.avatar.url(:medium), :class => "avatar" %>
@@ -66,7 +67,18 @@
 		</div>
 		<%= render partial: "shared/footer" %>
 	</div>
-
+	<script type="text/javascript">
+		idUsuario = <%= current_user.id %>;
+		if( "<%= action_name %>"== "messages" ) vistaMensajes = true;
+		else vistaMensajes = false;
+		//codigo de adolfo diaz
+		<% if current_user.pendingMessages == nil %>
+			mensajesPendientes = 0;
+		<% else %>
+			mensajesPendientes = <%= current_user.pendingMessages  %>;
+		<% end %>
+		
+	</script>
 	<script src="/js/bootstrap/transition.js"></script>
     <script src="/js/bootstrap/alert.js"></script>
     <script src="/js/bootstrap/button.js"></script>
@@ -79,6 +91,9 @@
     <script src="/js/bootstrap/scrollspy.js"></script>
     <script src="/js/bootstrap/tab.js"></script>
     <script src="/js/bootstrap/affix.js"></script>
+    <script src="/js/chat/socket.io.js"></script>
+    <script src="/js/chat/funcionesNodeJS.js"></script>
+    <script src="/js/chat/toastr.js"></script>
 
     <script type="text/javascript">
     	$('.dropdown-toggle').dropdown()  
